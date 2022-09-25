@@ -1,4 +1,4 @@
-public class Main {
+public class selectionSortCode {
     public static void main(String[] args) {
         // initialize array
         int[] numbers = new int[10];
@@ -20,9 +20,9 @@ public class Main {
 
         // array after sorting
         System.out.print("Array After Sorting: ");
-        bubbleSort(numbers);
+        selectionSort(numbers);
         printArrayElements(numbers);
-        System.out.print("\n");
+        System.out.print("\n\n");
 
     }
 
@@ -33,17 +33,21 @@ public class Main {
         }
     }
 
-    // function to sort the array using bubble sort algorithm
-    private static void bubbleSort(int[] numbers) {
+    // function to sort the array using selection sort algorithm
+    private static void selectionSort(int[] numbers) {
         for (int lastSortedIndex = numbers.length - 1; lastSortedIndex > 0; lastSortedIndex--) {
-            for (int i = 0; i < lastSortedIndex; i++) {
-                if (numbers[i] < numbers[i + 1]) {
-                    // swap the adjacent elements
-                    int temp = numbers[i];
-                    numbers[i] = numbers[i + 1];
-                    numbers[i + 1] = temp;
+            int smallestIndex = 0;
+
+            for (int i = 1; i <= lastSortedIndex; i++) {
+                if (numbers[i] < numbers[smallestIndex]) {
+                    smallestIndex = i;
                 }
             }
+
+            // swap element in smallestIndex with element in lastSortedIndex
+            int temp = numbers[smallestIndex];
+            numbers[smallestIndex] = numbers[lastSortedIndex];
+            numbers[lastSortedIndex] = temp;
         }
     }
 }
